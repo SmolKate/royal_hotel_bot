@@ -2,9 +2,9 @@ const TelegramApi = require('node-telegram-bot-api')
 require('dotenv').config()
 
 
-// const token = '6552090051:AAFf-Paq6kck0vlhLnRSvci0O3d0Ud-5Ihw'
+const token = '6552090051:AAFf-Paq6kck0vlhLnRSvci0O3d0Ud-5Ihw'
 // const token = '6512915316:AAFXYqBVCXPZnV5i7TEcECwHwfOH3n018_Y'
-const token = process.env.TELEGRAM_TOKEN
+// const token = process.env.TELEGRAM_TOKEN
 let bot
 
 // if (process.env.NODE_ENV === 'production') {
