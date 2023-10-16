@@ -6,7 +6,7 @@ const bot = require('./bot')
 
 const app = express()
 
-const port = 5001
+const port = 88
 
 app.use(express.json())
 
