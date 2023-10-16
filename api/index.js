@@ -21,3 +21,9 @@
 
 //     response.send('ok')
 // }
+
+
+const app = require('../index')
+
+module.export = app
+
