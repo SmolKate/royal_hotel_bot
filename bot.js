@@ -7,13 +7,13 @@ require('dotenv').config()
 const token = process.env.TELEGRAM_TOKEN
 let bot
 
-if (process.env.NODE_ENV === 'production') {
-    bot = new TelegramApi(token) // create bot
-    bot.setWebHook(process.env.VERCEL_URL + bot.token)
-    console.log('bot is alive')
-} else {
+// if (process.env.NODE_ENV === 'production') {
+//     bot = new TelegramApi(token) // create bot
+//     bot.setWebHook(process.env.VERCEL_URL + bot.token)
+//     console.log('bot is alive')
+// } else {
     bot = new TelegramApi(token, {polling: true}) // create bot
-}
+// }
 
 bot.setMyCommands([
     {command: '/start', description: 'Здравствуйте'},
