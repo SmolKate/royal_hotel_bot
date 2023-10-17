@@ -1,34 +1,35 @@
-// const TelegramApi = require('node-telegram-bot-api')
-// const express = require('express')
-// require('dotenv').config()
-// // const token = '6512915316:AAFXYqBVCXPZnV5i7TEcECwHwfOH3n018_Y'
-// const token = '6552090051:AAFf-Paq6kck0vlhLnRSvci0O3d0Ud-5Ihw'
+const TelegramApi = require('node-telegram-bot-api')
+const express = require('express')
+require('dotenv').config()
+// const token = '6512915316:AAFXYqBVCXPZnV5i7TEcECwHwfOH3n018_Y'
+const token = '6552090051:AAFf-Paq6kck0vlhLnRSvci0O3d0Ud-5Ihw'
 
-const app = require('./api/index')
+// const app = require('./api/index')
+
+// module.export = app
+
+const bot = require('./bot')
+
+const app = express()
+
+const port = 3003
+
+app.use(express.json())
+
+app.get('/', (req, res) => {
+    res.status(200).json({message: 'Hellow, world!'})
+})
+
+app.post(`/${token}`, (req, res) => {
+    bot.processUpdate(req.body)
+    res.status(200).json({message: 'ok'})
+})
+
+app.listen(port, () => {
+    console.log('server is running')
+})
 
 module.export = app
-
-// const bot = require('./bot')
-
-// const app = express()
-
-// const port = 3003
-
-// app.use(express.json())
-
-// app.get('/', (req, res) => {
-//     res.status(200).json({message: 'Hellow, world!'})
-// })
-
-// app.post(`/${token}`, (req, res) => {
-//     bot.processUpdate(req.body)
-//     res.status(200).json({message: 'ok'})
-// })
-
-// app.listen(port, () => {
-//     console.log('server is running')
-// })
-
 
 
 
