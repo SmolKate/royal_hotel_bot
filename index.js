@@ -2,6 +2,7 @@
 const express = require('express')
 require('dotenv').config()
 // const token = '6512915316:AAFXYqBVCXPZnV5i7TEcECwHwfOH3n018_Y'
+const token = '6552090051:AAFf-Paq6kck0vlhLnRSvci0O3d0Ud-5Ihw'
 
 const bot = require('./bot')
 
@@ -15,7 +16,7 @@ app.get('/', (req, res) => {
     res.status(200).json({message: 'Hellow, world!'})
 })
 
-app.post(`/${process.env.TELEGRAM_TOKEN}`, (req, res) => {
+app.post(`/${token}`, (req, res) => {
     bot.processUpdate(req.body)
     res.status(200).json({message: 'ok'})
 })
