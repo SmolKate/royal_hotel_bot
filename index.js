@@ -25,6 +25,21 @@ app.post(`/${token}`, (req, res) => {
     res.status(200).json({message: 'ok'})
 })
 
+app.post(`/api/index`, (req, res) => {
+     bot.on('message', async (msg) => {   // request on message receive
+            console.log(msg)
+            const text = msg.text
+            const chatId = msg.chat.id
+            const messageId = msg.message_id 
+        
+            if (text === '/start') {
+                back.push(text)
+                await bot.sendSticker(chatId, './img/canvas.png')
+                await bot.sendMessage(chatId, `${msg.from.first_name} ${msg.from.last_name}, Вас приветствует бот отеля Royal Hotel!`, welcomeMenu)
+            }
+        })
+})
+
 app.listen(port, () => {
     console.log('server is running')
 })
