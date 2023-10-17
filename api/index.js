@@ -6,14 +6,29 @@ const token = '6552090051:AAFf-Paq6kck0vlhLnRSvci0O3d0Ud-5Ihw'
 module.exports = async (request, response) => {
     try {
         const bot = new TelegramApi(token) // create bot
-        const {body} = request
 
-        if (body.message) {
-            const {chat: {id}, text} = body.message
+        bot.on('message', async (msg) => {   // request on message receive
+            console.log(msg)
+            const text = msg.text
+            const chatId = msg.chat.id
+            const messageId = msg.message_id 
+        
+            if (text === '/start') {
+                back.push(text)
+                await bot.sendSticker(chatId, './img/canvas.png')
+                await bot.sendMessage(chatId, `${msg.from.first_name} ${msg.from.last_name}, Вас приветствует бот отеля Royal Hotel!`, welcomeMenu)
+            }
+        })
 
-            await bot.sendMessage(id, `${text}, Вас приветствует бот отеля Royal Hotel!`)
 
-        }
+        // const {body} = request
+
+        // if (body.message) {
+        //     const {chat: {id}, text} = body.message
+
+        //     await bot.sendMessage(id, `${text}, Вас приветствует бот отеля Royal Hotel!`)
+
+        // }
 
     } catch (error) {
         console.log(error)
