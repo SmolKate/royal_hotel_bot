@@ -1,7 +1,7 @@
 // const TelegramApi = require('node-telegram-bot-api')
 const express = require('express')
 require('dotenv').config()
-const token = '6512915316:AAFXYqBVCXPZnV5i7TEcECwHwfOH3n018_Y'
+// const token = '6512915316:AAFXYqBVCXPZnV5i7TEcECwHwfOH3n018_Y'
 
 const bot = require('./bot')
 
@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     res.status(200).json({message: 'Hellow, world!'})
 })
 
-app.post(`/${token}`, (req, res) => {
+app.post(`/${process.env.TELEGRAM_TOKEN}`, (req, res) => {
     bot.processUpdate(req.body)
     res.status(200).json({message: 'ok'})
 })
